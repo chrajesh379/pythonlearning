@@ -4,8 +4,87 @@ os.system("cls")
 print("pattrens program", end="\n")
 print("1.number pattren program")
 print("Outer Loop will dicate Rows and Inner loop will dicate columns")
+print("""
+number program : 1
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
 
+number program : 2
+
+*
+* *
+* * *
+* * * *
+* * * * *
+
+number program : 3
+
+1 2 3 4 5
+1 2 3 4
+1 2 3
+1 2
+1
+
+number program : 4
+
+* * * * *
+* * * *
+* * *
+* *
+*
+
+number program : 5
+
+number program : 13
+
+*                   *
+* *               * *
+* * *           * * *
+* * * *       * * * *
+* * * * *   * * * * *
+* * * * *   * * * * *
+* * * *       * * * *
+* * *           * * *
+* *               * *
+*                   *
+
+number program : 14
+
+0  
+0  1  
+0  2  4  
+0  3  6   9  
+0  4  8   12  16  
+0  5  10  15  20  25  
+0  6  12  18  24  30  36
+
+number program : 15
+
+* * * * *
+*       *
+*       *
+*       *
+* * * * *
+
+number program : 16
+
+* * * * * * * * * *
+* *             * *
+*   *         *   *
+*     *     *     *
+*       * *       *
+*       * *       *
+*     *     *     *
+*   *         *   *
+* *             * *
+* * * * * * * * * *
+
+""")
 numprogram = int(input("chose number program:"))
+
 if (numprogram==1):
 	RowLoop = int(input("Please enter row number:"))
 
@@ -197,25 +276,98 @@ elif numprogram==12:
 elif numprogram==13:
 	RowLoop = int(input("Please enter row number:"))
 
-	rowindex_1 = 1
-	spaces = (RowLoop*3)+1
-	middle_sapce = (RowLoop*2)
-	rowindex_2 = 1
-	space=' '
-    
-	while rowindex_1<=RowLoop:
+	rowindex = 1
+    #first section
+	while rowindex<=RowLoop:
 		#print(f"outerloop iteration level is : {rowindex}")
-		columnindex_1 = 1
-		while columnindex_1<=rowindex_1:
+		columnindex = 1
+		while columnindex<=rowindex:
 			#print(f"innerloop iteration level is: {columnindex}")
 			print(f"*" , end=" ")
-			columnindex_1 += 1 
-		print(f"{space*middle_sapce}",end="")
-		print("z",end=" ")
-		print(f"{space*RowLoop}",end=" ")
-		print("y",end=" ")
+			columnindex += 1 
+		
+		columnindex = 1
+		while columnindex<=(RowLoop-rowindex+1):
+			print(f" ",end=" ")
+			columnindex += 1
+		
+		columnindex = 1
+		while columnindex<=RowLoop:
+			if columnindex>=RowLoop-rowindex+1:
+				print(f"*",end=" ")
+			else:
+				print(f" ",end=" ")
+			columnindex += 1
 		print("")
-		spaces =spaces-2
-		middle_sapce = middle_sapce-2
-		rowindex_1 +=1
+		rowindex +=1
+	#print("")
+	
+	#Second section
+	#print("")
+	rowindex = 1
+	while rowindex<=RowLoop:
+		columnindex = RowLoop-rowindex+1
+		while columnindex>=1:
+			print(f"*" , end=" ")
+			columnindex -= 1 
+			
+		columnindex = 1
+		while columnindex<=(rowindex):
+			print(f" ",end=" ")
+			columnindex += 1
+		
+		columnindex = 1
+		while columnindex<=RowLoop:
+			if columnindex<=rowindex-1:
+				print(f" ",end=" ")
+			else:
+				print(f"*",end=" ")
+			columnindex += 1
+		print("")
+		rowindex +=1
+		
 	print("")
+
+elif numprogram==14:
+	RowLoop = int(input("Please enter row number:"))
+	
+	rowindex = 1
+	while rowindex<=RowLoop:
+		columnindex =1 
+		while columnindex<=rowindex:
+			if columnindex==1:
+				print("0",end=" ")
+			else:
+				print(f"{(rowindex-1)*(columnindex-1)}",end=" ")
+			columnindex +=1
+		print("")
+		rowindex +=1
+	print("")
+elif numprogram==15:
+	RowLoop = int(input("Please enter row number:"))
+	rowindex =1 
+	while rowindex<=RowLoop:
+		columnindex=1
+		while columnindex<=RowLoop:
+			if (rowindex ==1 or rowindex== RowLoop or columnindex==1 or columnindex==RowLoop):
+				print(f"*",end=" ")
+			else:
+				print(" ",end=" ")
+			columnindex +=1
+		print("")
+		rowindex +=1
+	
+elif numprogram==16:
+	RowLoop = int(input("Please enter row number:"))
+	rowindex =1 
+	while rowindex<=RowLoop:
+		columnindex=1
+		while columnindex<=RowLoop:
+			if (rowindex ==1 or rowindex== RowLoop or columnindex==1 or columnindex==RowLoop or columnindex == rowindex or columnindex == (RowLoop-rowindex+1)):
+				print(f"*",end=" ")
+			else:
+				print(" ",end=" ")
+			columnindex +=1
+		print("")
+		rowindex +=1
+	
